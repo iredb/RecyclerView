@@ -4,6 +4,7 @@ import Adapter
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.activity.enableEdgeToEdge
@@ -26,7 +27,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Устанавливаем адаптер
-        recyclerView.adapter = Adapter(this, fetchColorList())
+        recyclerView.adapter = Adapter(this, fetchColorList()) { colorName ->
+            // Обработка клика на ячейке
+            Toast.makeText(this, "Clicked: $colorName", Toast.LENGTH_SHORT).show()
+        }
     }
 }
 
